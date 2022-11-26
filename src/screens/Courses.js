@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import FolderIcon from '@mui/icons-material/Folder';
+import FileIcon from '@mui/icons-material/InsertDriveFile';
 import Divider from '@mui/material/Divider';
 import { TouchableOpacity } from '../components/global';
 import "../styles/Courses.css"
@@ -17,9 +18,9 @@ export default function Courses() {
 
 function FolderList(){
   const [data, setData] = useState([
-    {name:'gestion de projets',subfolders:7},
-    {name:"Systeme d'exploitation",subfolders:7},
-    {name:'Design patterns',subfolders:13}
+    {name:'gestion de projets',subfolders:7,type:'folder'},
+    {name:"Systeme d'exploitation",subfolders:7,type:'folder'},
+    {name:'Design patterns',type:'file',uri:''},
   ])
   return (
     <div className='Folder-list-container'>
@@ -27,9 +28,15 @@ function FolderList(){
         header
       </div>
       <List dense={true}>
-        {data.map((i,k)=>(
+        {data.filter(i=>i.type=='folder').map((i,k)=>(
           <div key={k}>
             <Folder data={i}/>
+            {k!==(data.length-1)&&<Divider variant="inset" component="li" />}
+          </div>
+        ))}
+        {data.filter(i=>i.type=='file').map((i,k)=>(
+          <div key={k}>
+            <File data={i}/>
             {k!==(data.length-1)&&<Divider variant="inset" component="li" />}
           </div>
         ))}
@@ -56,3 +63,19 @@ function Folder({data}) {
     </TouchableOpacity>
    );
 }
+
+function File({data}) {
+  return ( 
+    <TouchableOpacity>              
+      <ListItem>
+        <ListItemIcon>
+          <FileIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary={data.name}
+        />
+      </ListItem>
+    </TouchableOpacity>
+   );
+}
+

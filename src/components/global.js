@@ -16,6 +16,7 @@ export function TouchableOpacity({children, ...rest }) {
   return (
     <button
       style={{ opacity: touched ? 0.5 : 1, transition: 'opacity 300ms ease',border:'none',backgroundColor:'transparent',width:'100%'}}
+      className="touchable-opacity"
       onMouseDown={() => touchedSet(true)}
       onMouseUp={() => touchedSet(false)}
       {...rest}>
