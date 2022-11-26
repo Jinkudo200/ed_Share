@@ -23,7 +23,7 @@ export default function Ref({docRef,children}) {
     </div>
   );
 }
-export function Refs({docRef,children}) {
+export function Refs({docRef,children,url}) {
     const [data,setdata]=React.useState([])
     const [loading, setLoading] = useState(true)
     const [err, setErr] = useState(false)
@@ -36,7 +36,7 @@ export function Refs({docRef,children}) {
     }
     React.useEffect(()=>{
         getData() 
-    },[])
+    },[url])
     
     return (
       <div>

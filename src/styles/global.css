@@ -14,3 +14,8 @@
 .touchable-opacity:hover{
     cursor: pointer;
 }
+.notifications-container{
+    margin:10px auto;
+    /* width: max-content; */
+    /* float: ri; */
+}

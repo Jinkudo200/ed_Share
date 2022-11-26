@@ -1,5 +1,5 @@
 .Univerity-list{
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     display: flex;
     flex-wrap:wrap;
     flex-direction: row;

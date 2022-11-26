@@ -1,11 +1,9 @@
 import './App.css';
-import UniverityList from './screens/UniverityList';
-import Courses from './screens/Courses';
-import Students from './screens/Students';
+import MainRouter from './routers/MainRouter';
 function App() {
   return (
     <div className="App">
-      <Courses/>
+      <MainRouter/>
     </div>
   ); 
 }

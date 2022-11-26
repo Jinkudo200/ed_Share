@@ -1,9 +1,10 @@
 .Folder-list-container{
-    max-width: max-content;
-    min-width: 400px;
+    width: 80%;
     border: solid 1px black;
     border-radius: 10px;
     overflow: hidden;
+    margin: 20px;
+    background-color: white;
 }
 
 .courses-container{
@@ -17,9 +18,7 @@
     cursor: pointer;
 }
 
-.Folder-container{
-
-}
 .Folder-list-header{
-    background-color: aquamarine;
+    background-color: #e8e8e8;
+    padding: 7px;
 }

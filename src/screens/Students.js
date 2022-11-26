@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -22,7 +22,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import AddIcon from '@mui/icons-material/Add';
 import { visuallyHidden } from '@mui/utils';
-
+import AddStudent from './AddStudent'; 
+import { Add } from '@mui/icons-material';
 function createData(name, email, password) {
   return {
     name,
@@ -32,21 +33,11 @@ function createData(name, email, password) {
 }
 
 const rows = [
-  createData('Cupcake', 'klasdj@gmail.com', 'pass1'),
-  createData('haha', 'haha@gmail.com', 'pass2'),
-  createData('jojo', 'jojo@gmail.com', 'pass3'),
-  createData('Cupcake1', 'klasdj@gmail.com', 'pass1'),
-  createData('haha1', 'haha@gmail.com', 'pass2'),
-  createData('jojo1', 'jojo@gmail.com', 'pass3'),
-  createData('Cupcake2', 'klasdj@gmail.com', 'pass1'),
-  createData('haha2', 'haha@gmail.com', 'pass2'),
-  createData('jojo2', 'jojo@gmail.com', 'pass3'),
-  createData('Cupcake3', 'klasdj@gmail.com', 'pass1'),
-  createData('haha3', 'haha@gmail.com', 'pass2'),
-  createData('jojo3', 'jojo@gmail.com', 'pass3'),
-  createData('Cupcake4', 'klasdj@gmail.com', 'pass1'),
-  createData('haha4', 'haha@gmail.com', 'pass2'),
-  createData('jojo4', 'jojo@gmail.com', 'pass3'),
+  createData('Ayman EL KIHEL', 'aymanelkihel@gmail.com', 'pass1'),
+  createData('Meryem Mountassir', 'meryem@gmail.com', 'pass2'),
+  createData('Abderafie', 'abderafie@gmail.com', 'pass3'),
+  createData('Hiba', 'hiba@gmail.com', 'pass4'),
+
 
 ];
 
@@ -199,7 +190,7 @@ function EnhancedTableToolbar(props) {
         </Tooltip>
       ) : (
         <Tooltip title="Add">
-          <IconButton>
+          <IconButton onClick={()=>props.setOpen(true)}>
             <AddIcon />
           </IconButton>
         </Tooltip>
@@ -219,6 +210,8 @@ export default function Students() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [open, setOpen] = useState(false)
+  const [rowdata, setRowData] = useState(()=>rows)
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -228,7 +221,7 @@ export default function Students() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n.name);
+      const newSelected = rowdata.map((n) => n.name);
       setSelected(newSelected);
       return;
     }
@@ -277,7 +270,10 @@ export default function Students() {
   return (
     <Box sx={{ margin: 2 }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length}  setOpen={setOpen}/>
+        <AddStudent open={open} setOpen={setOpen} addStudent={((data)=>{
+          setRowData(d=>[...d,data])
+        })}/>
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -290,12 +286,12 @@ export default function Students() {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={rowdata.length}
             />
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.sort(getComparator(order, orderBy)).slice() */}
-              {stableSort(rows, getComparator(order, orderBy))
+              {stableSort(rowdata, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.name);
@@ -349,7 +345,7 @@ export default function Students() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={rowdata.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

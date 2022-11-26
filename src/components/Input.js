@@ -1,24 +1,28 @@
 import React , {useState} from 'react'
-import {ref , uploadBytes} from 'firebase/storage'
-import { db, storage } from '../config/firebase'
+// import {ref , uploadBytes} from 'firebase/storage'
+// import { db, storage } from '../config/firebase'
 // import "../styles/Input.css"
-
-
+import TextField from '@mui/material/TextField';
+import { Box } from '@mui/system';
 export const MyInput=({formProps,field,header})=>(
-    <div >
-      <p >{header}</p>
-      <input 
-      // style={{borderBottomColor:formProps.isSubmitting&&formProps.errors[field]?"red":"black"}}
+    <Box sx={{marginBottom:2}}>
+
+      <TextField id="standard-basic" label={header} variant="standard"
+      onChange={formProps.handleChange(field)}
+      value={formProps.values[field]}
+      onBlur={formProps.handleBlur(field)} 
+      sx={{width:'100%'}} 
+      />
+      {/* <p style={{color:"red"}}>{formProps.touched[field]&&formProps.errors[field]}</p> */}
+    </Box>
+  )
+  
+        {/* <input 
       onChange={formProps.handleChange(field)}
       value={formProps.values[field]}
       onBlur={formProps.handleBlur(field)}
       // {...props}
-      />
-      <p style={{color:"red"}}>{formProps.touched[field]&&formProps.errors[field]}</p>
-    </div>
-  )
-  
-  
+      /> */}
   
   
 export const FileInput=(props)=>{

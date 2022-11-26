@@ -14,6 +14,9 @@ nav .title{
     display: flex;
     align-items: center;
 }
+nav .title:hover{
+    cursor: pointer;
+}
 nav .title label{
     font-size: large;
     font-weight: bold;
@@ -22,10 +25,12 @@ nav .title label{
 }
 
 .qoute-container{
-    background-color: #159094;
+    /* background-color: #159094; */
     width: 70%;
     padding: 20px;
     margin: 20px auto;
+    border-radius: 10px;
+    border: solid 2px white;
 }
 
 .qoute-container p {
