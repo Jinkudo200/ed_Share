@@ -39,7 +39,7 @@ export default function Home() {
         <Header />
         <div className='qoute-container'>
             <p>EdShare is a modern plateform for students made by Club Emicatronic</p>
-            <p>As an engineering students we know your needs and the problems you face. So we provade a plateform where you can find courses exams and valuable informations</p>
+            <p>As an engineering students we know your needs and the problems you face. So we provide a plateform where you can find courses exams and valuable informations</p>
         </div>
     </div>
   )
