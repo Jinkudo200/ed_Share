@@ -4,7 +4,7 @@ import Contact from './screens/Contact';
 function App() {
   return (
     <div className="App">
-      <Contact/>
+      <Home/>
     </div>
   );
 }

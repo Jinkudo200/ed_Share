@@ -1,5 +1,5 @@
 import React from 'react'
-import { MyInput , FileInput } from '../Components.js/Input';
+import { MyInput , FileInput } from '../components/Input';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
