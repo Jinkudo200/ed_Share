@@ -3,7 +3,7 @@ import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import FolderIcon from '@mui/icons-material/Folder';
 import FileIcon from '@mui/icons-material/InsertDriveFile';
 import Divider from '@mui/material/Divider';
-import { TouchableOpacity } from '../components/global';
+import { TouchableOpacity } from '../components/global.js';
 import "../styles/Courses.css"
 export default function Courses() {
   return (
