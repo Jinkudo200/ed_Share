@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import FolderIcon from '@mui/icons-material/Folder';
 import Divider from '@mui/material/Divider';
-import { TouchableOpacity } from '../components/global';
+import { TouchableOpacity } from '../components/global.js';
 import "../styles/Courses.css"
 export default function Courses() {
   return (
