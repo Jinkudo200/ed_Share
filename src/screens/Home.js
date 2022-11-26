@@ -17,7 +17,7 @@ const Header=()=>{
             <div className='title'>
                 <img src={require("../static/icon.png")} height={70}/>
                 <label>EdShare</label>
-            </div>
+            </div> 
             {width < 700?
             <BasicMenu />:
             <Stack direction="row" spacing={2}>
@@ -27,7 +27,7 @@ const Header=()=>{
                 <Button variant="contained" endIcon={<Login />}>
                     Login
                 </Button>
-            </Stack>}
+            </Stack>} 
         </nav>
     )
 }
@@ -48,7 +48,7 @@ export default function Home() {
 
 
 
-
+ 
 
 
 function BasicMenu() {

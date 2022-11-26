@@ -21,7 +21,7 @@ export const MyInput=({formProps,field,header})=>(
   
   
   
-  export const FileInput=(props)=>{
+export const FileInput=(props)=>{
     const [data, setData] = useState(null)
     const handlechange=(e)=>{
       const defaultChange = props.formProps.handleChange(props.field);

@@ -1,0 +1,13 @@
+.Univerity-list{
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+.UniversityCard-container{
+    max-width: max-content;
+}
+
