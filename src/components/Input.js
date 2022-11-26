@@ -1,10 +1,11 @@
 import React , {useState} from 'react'
 import {ref , uploadBytes} from 'firebase/storage'
 import { db, storage } from '../config/firebase'
+// import "../styles/Input.css"
 
 
 export const MyInput=({formProps,field,header})=>(
-    <div className='input'>
+    <div >
       <p >{header}</p>
       <input 
       // style={{borderBottomColor:formProps.isSubmitting&&formProps.errors[field]?"red":"black"}}

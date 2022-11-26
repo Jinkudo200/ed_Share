@@ -1,11 +1,11 @@
 import React from 'react'
-import { MyInput , FileInput } from '../Components.js/Input';
+import { MyInput, FileInput } from '../components/Input';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 // import "../styles/Contact.css"
 
 
-export default function Contact() {
+export default function AddFile() {
 
 
   const handleSubmit = (values) => {
@@ -24,12 +24,10 @@ export default function Contact() {
 
   return (
     <Formik
-      initialValues={{ name: '',  email: '', phoneNumber: '', message: '' }}
+      initialValues={{ title: '',  description: '', file: '' }}
       validationSchema={Yup.object({
-        name: Yup.string().required('Required'),
-        email: Yup.string().email('Invalid email address').required('Required'),
-        phoneNumber: Yup.string().required('Required').matches(/^0[0-9]{9}/g,"Numéro de téléphone non valide"),
-        message: Yup.string().required('Required')
+        title: Yup.string().required('Required'),
+        description: Yup.string(),
       })}
       onSubmit={(values, { setSubmitting }) => {
         handleSubmit(values)
@@ -38,12 +36,11 @@ export default function Contact() {
       {(formProps) => (
         <Form>
           <div className='form-container'>
-            <MyInput formProps={formProps} field="name" header='Name' />
-            <MyInput formProps={formProps} field="email" header='Email' />
-            <MyInput formProps={formProps} field="phoneNumber" header='Phone Number' />
-            <MyInput formProps={formProps} field="message" header='Message' />
+            <MyInput formProps={formProps} field="title" header='Title' />
+            <MyInput formProps={formProps} field="description" header='Description' />
+            <FileInput formProps={formProps} field="file" header="File"/>
 
-            <button>Send Message</button>
+            <button>Send</button>
 
           </div>
         </Form>
