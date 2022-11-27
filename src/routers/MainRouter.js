@@ -22,7 +22,6 @@ export const userTypes={
 export default function MainRouter(props) {
     
     return ( 
-        <BrowserRouter>
             <Routes>
                 <Route path="/" element={<RouterContainer/>}>
                     <Route index element={<Home />} />
@@ -38,7 +37,6 @@ export default function MainRouter(props) {
 
                 </Route>   
             </Routes>
-        </BrowserRouter>
      );
 }
 
