@@ -27,5 +27,22 @@ p:before {
     color: #5a5a5a
 }
 
+#file{
+    display: none;
+}
 
 
+#file-container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding: 10px;
+    background-color: #d7e9ed;
+    width: max-content;
+    align-items: center;
+    margin: 10px auto;
+}
+#file-container:hover{
+    background-color: #baccd0;
+    cursor: pointer;
+}

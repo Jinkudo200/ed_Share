@@ -30,7 +30,7 @@ export default function MainRouter(props) {
                     <Route path="/register" element={<Register/>} />
                     <Route path="/universities" element={<UniverityList/>} />
                     <Route path="/courses/:id" element={<Courses/>} />
-                    <Route path="/univeristydetails/:id" element={<UniveristyDetails/>} />
+                    <Route path="/univeristydetails" element={<UniveristyDetails/>} />
                     <Route path="/students" element={<Students/>} />
                     <Route path="/demandes" element={<NotificationList/>} />
                     <Route path="/repository/:id" element={<Courses/>} />

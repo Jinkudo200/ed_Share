@@ -1,4 +1,4 @@
-import * as React from "react";
+import React,{useState} from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
@@ -6,6 +6,9 @@ import { MyInput, FileInput } from "../components/Input";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import {collection, doc, getDoc,getDocs, getDocsFromServer, query,where} from "firebase/firestore";
+import { db } from '../config/firebase';
+import { Typography } from "@mui/material";
 const style = {
   position: "absolute",
   top: "50%",
@@ -20,10 +23,11 @@ const style = {
   pb: 3,
 };
 
-
+// Abderafiechairi@gmail.com
 
 export default function Login({ open, setOpen,setLogin }) {
-    let navigate = useNavigate()
+  const [err, setErr] = useState(false)
+  let navigate = useNavigate()
 
   const handleOpen = () => {
     setOpen(true);
@@ -33,10 +37,27 @@ export default function Login({ open, setOpen,setLogin }) {
   };
   const handleSubmit=(values)=>{
     console.log(values);
-    setLogin(true);
-    handleClose();
-    navigate("/courses/jhgjhgj");
+    getDocs(query(collection(db,"managers"),where("email", "==", values.email),where("password", "==", values.password)))
+    .then(ref=>{
+      if (ref.docs.length>0){
+        console.log("user found")
+        setLogin(true);
+        handleClose();
+        navigate("/courses/jhgjhgj");
+        setErr(false);
+      }else{
+        console.log("user not found")
+        setErr(true);
+      }
+    })
+
+
+
   }
+
+  const login=(values)=>{
+  }
+
   return (
     <div>
       <Modal
@@ -70,6 +91,7 @@ export default function Login({ open, setOpen,setLogin }) {
                     header="Password"
                   />
                   <Button onClick={()=>formProps.handleSubmit()}>Login</Button>
+                  {err&&<Typography sx={{color:'red'}}>User not found</Typography>}
                 </div>
               </Form>
             )}

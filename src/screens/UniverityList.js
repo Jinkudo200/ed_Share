@@ -11,14 +11,19 @@ import PublicIcon from "@mui/icons-material/Public";
 import SchoolIcon from "@mui/icons-material/School";
 import MailIcon from "@mui/icons-material/Mail";
 import GroupIcon from "@mui/icons-material/Group";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { collection } from "firebase/firestore";
+import { db } from "../config/firebase";
+import { Refs } from "../config/Ref";
+import Image from "../components/Image";
 export function UniversityCard({ data }) {
+  const navigate = useNavigate();
   return (
     <div className="UniversityCard-container">
       <Card sx={{ maxWidth: 345, margin: 2 }}>
-        <CardMedia children={() => {}} />
-        <img src={require("../static/emi.png")} />
+        {/* <CardMedia children={() => {}} /> */}
+        {/* <img src={require("../static/emi.png")} /> */}
+        <Image url={data.imgUrl} height={100} width={150}/>
         <CardContent>
           <Row>
             <Typography
@@ -49,7 +54,7 @@ export function UniversityCard({ data }) {
               component="div"
               sx={{ color: "GrayText", fontSize: 16 }}
             >
-              {data.mail}
+              {data.email}
             </Typography>
           </Row>
           <Row>
@@ -60,7 +65,7 @@ export function UniversityCard({ data }) {
               component="div"
               sx={{ color: "GrayText", fontSize: 16 }}
             >
-              {data.studentNbr} élèves
+              {data.nbrstudents} élèves
             </Typography>
           </Row>
         </CardContent>
@@ -68,9 +73,7 @@ export function UniversityCard({ data }) {
           <Link to={"/courses/"+data.id}>
             <Button size="small">Show Courses</Button>
           </Link>
-          <Link to={"/univeristydetails/" + data.id}>
-            <Button size="small">More details</Button>
-          </Link>
+            <Button size="small" onClick={()=>navigate('/univeristydetails', { state: { data : data.detail} })}>More details</Button>
         </CardActions>
       </Card>
     </div>
@@ -78,22 +81,20 @@ export function UniversityCard({ data }) {
 }
 
 export default function UniverityList() {
-  const [data, setData] = useState([
-    {
-      id: "hhhh",
-      name: "EMI",
-      adresse: "Rabat/ Agdal rue Ibn Sina",
-      tel: "0765421231",
-      mail: "Emi@emi.ac.ma",
-      studentNbr: 1532,
-      imgUrl: "../static/icon.png",
-    }
-  ]);
+
   return (
-    <div className="Univerity-list">
-      {data.map((i, k) => (
-        <UniversityCard key={k} data={i} />
-      ))}
-    </div>
+      <Refs docRef={collection(db,"managers")}>
+    
+      {(data)=>(
+        <div className="Univerity-list">
+          {
+            data.map((i, k) => (
+              <UniversityCard key={k} data={i} />
+            ))
+          }
+        </div>
+      )}
+      </Refs>
+
   );
 }

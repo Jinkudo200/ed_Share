@@ -12,6 +12,6 @@ export default function Image({url,style}) {
         func();
     },[])
     return (
-    <img src={absurl} width="100%" style={style}/>        
+    <img src={absurl} width="100%" height={150} style={style}/>        
     )
 }

@@ -1,0 +1,25 @@
+.register-form-container{
+
+    width: 80%;
+    margin:20px auto;
+    background-color: white;
+    padding: 20px;
+}
+
+.register-inputs-container{
+    display: grid;
+    grid-template-columns:repeat(2, minmax(200px, auto));
+    gap: 10px 30px;
+}
+@media (width < 700px){
+    .register-inputs-container{
+        display: grid;
+        grid-template-columns:auto;
+        gap: 10px 30px;
+    }
+}
+.register-title{
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 20px auto;
+}
